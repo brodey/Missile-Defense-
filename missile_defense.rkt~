@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname missile_defense) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname missile_defense) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
 (require 2htdp/universe)
 (require 2htdp/image)
 
@@ -87,37 +87,7 @@
   (cond [(<= world-height (posn-y (sprite-loc sprite))) true]
         [else false]))
 
-
-
-
-
-;; remove-dead-missiles : LOS LOS -> LOS
-;; Given two LOSs (a list of missiles and a list of bullets,
-;; produces a LOS (list of missiles) sans any dead missiles
-
-(define-struct sprite (loc vel size color))
-
-; For testing
-(define ma (make-sprite (make-posn 50 50) (make-posn 1 1) missile-r missile-color))
-(define mb (make-sprite (make-posn 100 100) (make-posn 1 1) missile-r missile-color))
-(define mc (make-sprite (make-posn 150 150) (make-posn 1 1) missile-r missile-color))
-(define ba (make-sprite (make-posn 51 51) (make-posn 1 1) bullet-r bullet-color))
-(define bb (make-sprite (make-posn 151 151) (make-posn 1 1) bullet-r bullet-color))
-(define bc (make-sprite (make-posn 10 10) (make-posn 1 1) bullet-r bullet-color))
-
-(define lom1 (list ma mb mc))
-(define lob1 (list ba bb bc))
-
- 
-(check-expect (remove-dead-missiles lom1) (list mc))
-
-(define (remove-dead-missiles lom lob)
-  (cond [(empty? lom) empty]
-        [(collision? (first lom) (first lob)) 0]
-        [(not (collision? (first lom) (first lob)) (list (first lom)))]
-        [else (remove-dead-missiles lom (rest lob))]
-        
-
+;; 
 
 
                    
